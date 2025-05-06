@@ -195,61 +195,59 @@
     </section>
 <!-- End Videos -->
 
+<!-- Abstract -->
     <section class="section">
         <div class="container is-max-desktop">
-            <!-- Abstract. -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Abstract</h2>
-                    <div class="content has-text-justified">
-                        <p>
-                            Exploration is a fundamental challenge of general-purpose robotic learning, particularly in
-                            open-ended environments where explicit human guidance or task-specific feedback is limited.
-                            Vision-language models (VLMs), which can reason about object semantics, spatial relations,
-                            and potential outcomes, offer a promising foundation for guiding exploratory behavior by
-                            generating high-level goals or hypothetical transitions. However, their outputs lack
-                            grounding, making it difficult to determine whether imagined transitions are physically
-                            feasible or informative in the environment. To bridge this gap between imagination and
-                            execution, we present IVE(Imagine, Verify, Execute), an agentic exploration framework
-                            inspired by human curiosity. In humans, intrinsic motivation frequently emerges from the
-                            drive to discover novel scene configurations and to make sense of the environment. This
-                            process is often enhanced by verbalizing goals or intentions through language. To enable
-                            this human-inspired approach, IVE abstracts RGB-D observations into semantic scene graphs,
-                            imagines novel future scenes, predicts their physical plausibility, and executes actions via
-                            action tools. We evaluate IVE in both simulated and real-world tabletop environments using a
-                            suite of exploration metrics and downstream tasks. The results show that our method produces
-                            more diverse and meaningful exploration than RL baselines with intrinsic curiosity.
-                            Additionally, the data IVE collects enables downstream learning performance that closely
-                            matches that of policies trained on human-collected demonstrations.
-                        </p>
-                        </p>
-                    </div>
-                </div>
+            <h2 class="title is-3 has-text-centered">Abstract</h2>
+            <div class="content has-text-justified">
+                <p>
+                    Exploration is a fundamental challenge of general-purpose robotic learning, particularly in
+                    open-ended environments where explicit human guidance or task-specific feedback is limited.
+                    Vision-language models (VLMs), which can reason about object semantics, spatial relations,
+                    and potential outcomes, offer a promising foundation for guiding exploratory behavior by
+                    generating high-level goals or hypothetical transitions. However, their outputs lack
+                    grounding, making it difficult to determine whether imagined transitions are physically
+                    feasible or informative in the environment. To bridge this gap between imagination and
+                    execution, we present IVE(Imagine, Verify, Execute), an agentic exploration framework
+                    inspired by human curiosity. In humans, intrinsic motivation frequently emerges from the
+                    drive to discover novel scene configurations and to make sense of the environment. This
+                    process is often enhanced by verbalizing goals or intentions through language. To enable
+                    this human-inspired approach, IVE abstracts RGB-D observations into semantic scene graphs,
+                    imagines novel future scenes, predicts their physical plausibility, and executes actions via
+                    action tools. We evaluate IVE in both simulated and real-world tabletop environments using a
+                    suite of exploration metrics and downstream tasks. The results show that our method produces
+                    more diverse and meaningful exploration than RL baselines with intrinsic curiosity.
+                    Additionally, the data IVE collects enables downstream learning performance that closely
+                    matches that of policies trained on human-collected demonstrations.
+                </p>
             </div>
-            <!--/ Abstract. -->
+        </div>
+    </section>
+    <!-- Abstract -->
 
-            <!-- Paper video. -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Video</h2>
-                    <div class="publication-video">
-                        <iframe src="static/videos/paper_video_draft2.mp4" frameborder="0"
-                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                </div>
+
+
+    <!-- Project video -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Video</h2>
+            <div class="publication-video">
+                <iframe src="static/videos/paper_video_draft2.mp4" frameborder="0"
+                    allow="encrypted-media" allowfullscreen></iframe>
             </div>
-            <!--/ Paper video. -->
+        </div>
+    </section>
+    <!-- Project video -->
 
-            <!-- Paper overview. -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Overview</h2>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Overview</h2>
                     <div>
-                        <figure class="image is-fullwidth">
+                        <figure class="image is-fullwidth has-text-justified">
                             <img src="./static/images/overview.png">
                             <figcaption>
-                                <p>Overview of IVE (Imagine, Verify, Execute). The Scene Describer constructs a scene
-                                    graph from observations, the Explorer imagines novel configurations guided by memory
+                                <p>Overview of IVE (Imagine, Verify, Execute). The Scene Describer constructs a scene graph from observations, the Explorer imagines novel configurations guided by memory
                                     retrieval, and the Verifier predict the physical plausibility of proposed
                                     transitions. Verified plans are executed using action tools. Exploration is
                                     structured around semantic reasoning, verification, and physically grounded
@@ -257,11 +255,25 @@
                             </figcaption>
                         </figure>
                     </div>
-                </div>
-            </div>
-            <!--/ Paper overview. -->
         </div>
     </section>
+
+
+
+    <!-- Ablation baselines -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">IVE vs. Human Exploration</h2>
+            <div class="results">
+                <figure class="image is-fullwidth has-text-justified">
+                    <img src="static/images/ablations_baselines.png" alt="Ablation baselines">
+                    <figcaption>
+                        <p>Exploring with Embodied Agents: This figure compares the exploration capabilities of our method, IVE, powered by different Vision-Language Models (VLMs) against a human expert. The plots show performance across four key metrics as a function of interaction: (Left) the growth in the number of unique scene graphs discovered, (Middle Left) the entropy of visited states (a measure of diversity), (Middle Right) empowerment (the agent's ability to influence future states), and (Right) information gain (the amount of new information acquired). Notably, IVE, regardless of the VLM used, surpasses the human expert in generating unique scene graphs, achieving higher state diversity, and gaining more information.</p>
+                    </figcaption>
+            </div>
+        </div>
+    </section>
+    <!--/ Ablation baselines -->
 
 
     <section class="section" id="BibTeX">
