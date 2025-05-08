@@ -184,7 +184,11 @@
                 <div class="container">
                     <div class="columns">
                         <div id="top-video-description" class="column has-text-justified">
-                            <p>The IVE (Imagine-Verify-Execute) agent autonomously explores Tangram pieces in the real world (top row), commonobjects (middle row), and objects in simulation (bottom row). Across these tasks, IVE converts visual input to semantic scene graphs, imagines novel configurations, verifies their physical feasibility, and executes actions to gather diverse, semantically-grounded data for downstream learning.</p>
+                            <p>The IVE (Imagine-Verify-Execute) agent autonomously explores Tangram pieces in the real
+                                world (top row), commonobjects (middle row), and objects in simulation (bottom row).
+                                Across these tasks, IVE converts visual input to semantic scene graphs, imagines novel
+                                configurations, verifies their physical feasibility, and executes actions to gather
+                                diverse, semantically-grounded data for downstream learning.</p>
                         </div>
                     </div>
                 </div>
@@ -274,7 +278,10 @@
                         allowfullscreen></iframe>
                 </div>
                 <figcaption class="has-text-justified">
-                    <p>IVE makes it easy to collect diverse and informative exploration data at scale. Here we show a human expert collecting data using OpenTeach, a popular tool for collecting expert demonstrations (left), a human-in-the-loop collecting data using the same action tools exposed to IVE (middle), and IVE collecting data autonomously through embodied exploration (right).</p>
+                    <p>IVE makes it easy to collect diverse and informative exploration data at scale. Here we show a
+                        human expert collecting data using OpenTeach, a popular tool for collecting expert
+                        demonstrations (left), a human-in-the-loop collecting data using the same action tools exposed
+                        to IVE (middle), and IVE collecting data autonomously through embodied exploration (right).</p>
                 </figcaption>
             </figure>
             <br>
@@ -298,111 +305,117 @@
     <!-- Ablation baselines: video -->
 
 
-<section class="section">
-    <div class="container is-max-desktop">
-        <div class="prompt-prompts-container">
-            <!-- Prompt 1: Scene Describer -->
-            <h3 class="title is-3 has-text-centered">Prompts</h3>
-            <div class="prompt-prompt-card" id="scene-describer">
-                <div class="prompt-prompt-header" onclick="togglePrompt('scene-describer')">
-                    <div class="prompt-prompt-title-wrapper">
-                        <div class="prompt-prompt-icon prompt-icon-code">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="prompt-prompts-container">
+                <!-- Prompt 1: Scene Describer -->
+                <h3 class="title is-3 has-text-centered">Prompts</h3>
+                <div class="prompt-prompt-card" id="scene-describer">
+                    <div class="prompt-prompt-header" onclick="togglePrompt('scene-describer')">
+                        <div class="prompt-prompt-title-wrapper">
+                            <div class="prompt-prompt-icon prompt-icon-code">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <span class="prompt-prompt-title">Scene Describer</span>
                         </div>
-                        <span class="prompt-prompt-title">Scene Describer</span>
+                        <svg class="prompt-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
-                    <svg class="prompt-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </div>
-                <div class="prompt-prompt-content">
-                    <div class="prompt-prompt-text"></div>
-                    <div class="prompt-prompt-actions">
-                        <button class="prompt-copy-btn" onclick="copyPromptContent('scene-describer')">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <span>Copy</span>
-                        </button>
+                    <div class="prompt-prompt-content">
+                        <div class="prompt-prompt-text"></div>
+                        <div class="prompt-prompt-actions">
+                            <button class="prompt-copy-btn" onclick="copyPromptContent('scene-describer')">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Prompt 2: Explorer -->
-            <div class="prompt-prompt-card" id="explorer">
-                <div class="prompt-prompt-header" onclick="togglePrompt('explorer')">
-                    <div class="prompt-prompt-title-wrapper">
-                        <div class="prompt-prompt-icon prompt-icon-search">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
+                <!-- Prompt 2: Explorer -->
+                <div class="prompt-prompt-card" id="explorer">
+                    <div class="prompt-prompt-header" onclick="togglePrompt('explorer')">
+                        <div class="prompt-prompt-title-wrapper">
+                            <div class="prompt-prompt-icon prompt-icon-search">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </div>
+                            <span class="prompt-prompt-title">Explorer</span>
                         </div>
-                        <span class="prompt-prompt-title">Explorer</span>
+                        <svg class="prompt-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
-                    <svg class="prompt-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </div>
-                <div class="prompt-prompt-content">
-                    <div class="prompt-prompt-text"></div>
-                    <div class="prompt-prompt-actions">
-                        <button class="prompt-copy-btn" onclick="copyPromptContent('explorer')">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <span>Copy</span>
-                        </button>
+                    <div class="prompt-prompt-content">
+                        <div class="prompt-prompt-text"></div>
+                        <div class="prompt-prompt-actions">
+                            <button class="prompt-copy-btn" onclick="copyPromptContent('explorer')">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Prompt 3: Verifier -->
-            <div class="prompt-prompt-card" id="verifier">
-                <div class="prompt-prompt-header" onclick="togglePrompt('verifier')">
-                    <div class="prompt-prompt-title-wrapper">
-                        <div class="prompt-prompt-icon prompt-icon-check-square">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 11 12 14 22 4"></polyline>
-                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                            </svg>
+                <!-- Prompt 3: Verifier -->
+                <div class="prompt-prompt-card" id="verifier">
+                    <div class="prompt-prompt-header" onclick="togglePrompt('verifier')">
+                        <div class="prompt-prompt-title-wrapper">
+                            <div class="prompt-prompt-icon prompt-icon-check-square">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                            </div>
+                            <span class="prompt-prompt-title">Verifier</span>
                         </div>
-                        <span class="prompt-prompt-title">Verifier</span>
+                        <svg class="prompt-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
-                    <svg class="prompt-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </div>
-                <div class="prompt-prompt-content">
-                    <div class="prompt-prompt-text"></div>
-                    <div class="prompt-prompt-actions">
-                        <button class="prompt-copy-btn" onclick="copyPromptContent('verifier')">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <span>Copy</span>
-                        </button>
+                    <div class="prompt-prompt-content">
+                        <div class="prompt-prompt-text"></div>
+                        <div class="prompt-prompt-actions">
+                            <button class="prompt-copy-btn" onclick="copyPromptContent('verifier')">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- BibTeX -->
     <section class="section" id="BibTeX">
