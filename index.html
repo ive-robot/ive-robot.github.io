@@ -54,13 +54,29 @@
                             Vision-Language Models</h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a href="#">Anonymous</a></span>
-
-
+                                <a href="https://sjlee.cc/">Seungjae Lee<sup>*</sup></a></span>,
+                            <span class="author-block">
+                                <a href="https://danielekpo.com/">Daniel Ekpo<sup>*</sup></a></span>,
+                            <span class="author-block">
+                                <a href="https://hdacnw.github.io/">Haowen Liu</a></span>
                         </div>
 
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block"><sup></sup>Anonymous Institution</span>
+                            <span class="author-block">
+                                <a href="https://furong-huang.com/">Furong Huang<sup>†</sup></a></span>,
+                            <span class="author-block">
+                                <a href="https://www.cs.umd.edu/~abhinav/">Abhinav Shrivastava<sup>†</sup></a></span>,
+                            <span class="author-block">
+                                <a href="https://jbhuang0604.github.io/">Jia-Bin Huang<sup>†</sup></a></span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">University of Maryland, College Park</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>*</sup> These authors contributed equally. <sup>†</sup>
+                                These authors equally advised this work.</span>
                         </div>
 
                         <div class="column has-text-centered">
@@ -98,6 +114,18 @@
             </div>
         </div>
     </section>
+
+    <!-- Project video -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="publication-video">
+                <iframe src="static/videos/ive_video_submission_final.mp4" frameborder="0" allow="encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Project video -->
+
 
     <!-- Videos -->
     <section class="hero is-light is-small">
@@ -196,9 +224,12 @@
             </div>
             <!-- Simulation videos end -->
 
+
+
         </div>
     </section>
     <!-- End Videos -->
+
 
     <!-- Abstract -->
     <section class="section">
@@ -232,22 +263,10 @@
 
 
 
-    <!-- Project video -->
-    <section class="section">
-        <div class="container is-max-desktop">
-            <h3 class="title is-3 has-text-centered">Project video</h3>
-            <div class="publication-video">
-                <iframe src="static/videos/ive_video_submission_final.mp4" frameborder="0" allow="encrypted-media"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-    <!-- Project video -->
-
 
     <section class="section">
         <div class="container is-max-desktop">
-            <h3 class="title is-3 has-text-centered">Overview</h3>
+            <h3 class="title is-3 has-text-centered">Method Overview</h3>
             <div>
                 <figure class="image is-fullwidth has-text-justified">
                     <img src="./static/images/overview.png">
@@ -268,7 +287,7 @@
 
 
 
-    <!-- Ablation baselines: video -->
+    <!-- Ablation baselines -->
     <section class="section">
         <div class="container is-max-desktop">
             <h3 class="title is-3 has-text-centered">IVE vs. Human Exploration</h3>
@@ -285,12 +304,25 @@
                 </figcaption>
             </figure>
             <br>
+            <h3 class="title is-3 has-text-centered">Ablation and Results</h3>
+            <div class="results">
+                <figure class="image is-fullwidth has-text-justified">
+                    <img src="static/images/ablations_baselines_main.png" alt="Ablations">
+                    <figcaption class="has-text-justified">
+                        <p><strong>Ablation study of IVE.</strong> (Top) Illustration of each variant, highlighting removed modules in gray. (Bottom)
+                            Exploration performance is measured by the number of unique scene graphs, entropy, empowerment, and information
+                            gain (see Appendix A for metric details). Removing retrieval memory causes the largest performance drop, emphasizing
+                            the importance of experience-grounded generation. Verifier removal slightly degrades performance, particularly in
+                            terms of information gain, but empowerment remains relatively stable. The random tool selector baseline performs the
+                            worst across all metrics. Our full model (IVE) approaches human-level exploration efficiency.</p>
+                    </figcaption>
+                </figure>
+            </div>
             <div class="results">
                 <figure class="image is-fullwidth has-text-justified">
                     <img src="static/images/ablations_baselines.png" alt="Ablation baselines">
                     <figcaption class="has-text-justified">
-                        <p>Exploring with Embodied Agents: This figure compares the exploration capabilities of our
-                            method, IVE, powered by different Vision-Language Models (VLMs) against a human expert. The
+                        <p><strong>Exploring with Embodied Agents.</strong> IVE, powered by different Vision-Language Models (VLMs) against a human expert. The
                             plots show performance across four key metrics as a function of interaction: (Left) the
                             growth in the number of unique scene graphs discovered, (Middle Left) the entropy of visited
                             states (a measure of diversity), (Middle Right) empowerment (the agent's ability to
@@ -300,9 +332,17 @@
                             information.</p>
                     </figcaption>
             </div>
+            <br>
+            <div class="results">
+                <figure class="image is-fullwidth has-text-justified">
+                    <img src="static/images/experiment_result_arxiv.png" alt="Experiment results">
+                    <figcaption class="has-text-justified">
+                        <p><strong>Exploration capability evaluation across simulated and real-world environments.</strong> Top: Growth curves of the number of unique scene graphs visited. Bottom: Diversity of visited states, measured by entropy.
+                            </p>
+            </div>
         </div>
     </section>
-    <!-- Ablation baselines: video -->
+    <!-- Ablation baselines: -->
 
 
     <section class="section">
