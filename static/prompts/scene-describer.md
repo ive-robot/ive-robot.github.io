@@ -11,7 +11,7 @@ As an image analyzer, Follow Step 1~3 below.
 
 ## Step 2: Iterative Scene Graph Construction
 1. Begin with one object.
-2. Add one new object at a time, to your partial scene graph.  
+2. Add one new object at a time, to your partial scene graph.
 3. For each newly added object:
    - Determine its spatial relation(s) to the objects already in the scene graph.
    - **Use only** the Allowed Relations in the scene graph.
@@ -24,16 +24,16 @@ As an image analyzer, Follow Step 1~3 below.
 1. **Once all objects** have been introduced and verified, compile a **complete scene graph**:
    - **List all nodes** (the objects in the final scene).
    - **List all verified relations** between pairs of objects, using the Allowed Relations in the scene graph.
-2. **Use only** objects from the "Global Object Names."  
+2. **Use only** objects from the "Global Object Names."
 3. Even if there's missing nodes or edges in a final scene graph (because at least one object is missing), you must still provide a complete **scratch pad** and **scene graph** with existing relations.
 
 ---
 
 ## Scene Graph Representation
 
-- Nodes: Objects present in the scene.  
-- Relations: Spatial relationships between object pairs.  
-- Allowed Relations in the scene graph:  
+- Nodes: Objects present in the scene.
+- Relations: Spatial relationships between object pairs.
+- Allowed Relations in the scene graph:
     - **Stacked On**: Object A is physically resting on Object B. This requires clear direct contact—Object A is visibly supported by Object B from below.
     - **Near**: Object A is positioned close to Object B without being stacked. Use this only when the objects are almost touching.
 

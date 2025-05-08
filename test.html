@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Prompts</title>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f2f5;
+        color: #333;
+    }
+
+    .prompts-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .prompt-item {
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .prompt-item:last-child {
+        border-bottom: none;
+    }
+
+    .prompt-header {
+        padding: 15px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        transition: background-color 0.3s ease;
+    }
+
+    .prompt-header:hover {
+        background-color: #f9f9f9;
+    }
+
+    .prompt-title {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #007bff; /* Accent color for title */
+    }
+
+    .prompt-toggle-icon {
+        font-size: 1.2em;
+        transition: transform 0.3s ease;
+    }
+
+    .prompt-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        background-color: #fdfdfd;
+        padding: 0 20px;
+    }
+
+    .prompt-content.active {
+        /* max-height set by JS based on content */
+        padding: 20px 20px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .prompt-text-area {
+        white-space: pre-wrap; /* Preserves whitespace and newlines */
+        word-wrap: break-word; /* Breaks long words */
+        background-color: #f4f6f8;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #d1d9e0;
+        font-family: "Menlo", "Consolas", "Liberation Mono", monospace;
+        font-size: 0.9em;
+        line-height: 1.6;
+        color: #2d3748; /* Darker text for better readability */
+        max-height: 400px; /* Max height for the text area itself */
+        overflow-y: auto; /* Scroll if content exceeds max height */
+    }
+
+    /* Basic Markdown-like styling within the prompt text */
+    .prompt-text-area strong, .prompt-text-area b { /* **bold** or <b> */
+        color: #c53030; /* Dark red for emphasis */
+        font-weight: bold;
+    }
+    .prompt-text-area code { /* `code` */
+        background-color: #e2e8f0;
+        padding: 0.2em 0.4em;
+        margin: 0;
+        font-size: 85%;
+        border-radius: 3px;
+        color: #2c5282; /* Dark blue for code */
+    }
+    .prompt-text-area .md-header { /* For lines starting with ## */
+        font-weight: bold;
+        color: #2c5282; /* Dark blue for headers */
+        margin-top: 0.8em;
+        margin-bottom: 0.4em;
+        display: block; /* Ensure it takes its own line */
+    }
+    .prompt-text-area hr {
+        border: none;
+        height: 1px;
+        background-color: #cbd5e0;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+
+    .copy-button {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 8px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        transition: background-color 0.2s ease;
+    }
+
+    .copy-button:hover {
+        background-color: #0056b3;
+    }
+    .copy-button:active {
+        background-color: #004085;
+    }
+
+    .copy-button.copied {
+        background-color: #28a745; /* Green for success */
+    }
+
+
+    h1.main-title {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+
+</style>
+</head>
+<body>
+
+<h1 class="main-title">Prompts</h1>
+
+<div class="prompts-container">
+    <div class="prompt-item">
+        <div class="prompt-header" aria-expanded="false" aria-controls="prompt-content-1">
+            <span class="prompt-title">Scene Describer</span>
+            <span class="prompt-toggle-icon">▶</span>
+        </div>
+        <div class="prompt-content" id="prompt-content-1">
+            <div class="prompt-text-area" id="prompt-text-1">## Your Task
+You are an expert image analyzer tasked with identifying the **exact** placement and spatial relationships
+
+As an image analyzer, Follow Step 1-3 below.
+<hr>
+## Step 1: Fill the Answer in QnA Section
+<hr>
+## Step 2: Iterative Scene Graph Construction
+1. Begin with one object.
+2. Add one new object at a time, to your partial scene graph.
+3. For each newly added object:
+    - Determine its spatial relation(s) to the objects already in the scene graph.
+    - **Use only** the allowed Relations in the scene graph.
+    - Do not assign more than one relation for the same object pair `(new_object, existing_object) == '(existing_object, new_object)`.
+    - You may introduce multiple relations at once if the new object relates to multiple existing objects.
+<hr>
+## Step 3: Final Scene Graph Output
+1. **Once all objects** have been introduced and verified, compile a **complete scene graph**:
+    - **List all nodes** (the objects in the final scene)
+    - **List all verified relations** between pairs of objects, using the Allowed Relations in the scene graph.
+2. **Use only** objects from the "Global Object Names."
+3. Even if there's missing nodes or edges in a final scene graph (because at least one object is missing),
+<hr>
+## Scene Graph Representation
+
+- Nodes: Objects present in the scene.
+- Relations: Spatial relationships between object pairs.
+- Allowed Relations in the scene graph
+    - **Stacked On**: Object A is physically resting on Object B. This requires clear direct contact-Object
+    - **Near**: Object A is positioned close to Object B without being stacked. Use this only when the object (text cut off in image)
+            </div>
+            <button class="copy-button" data-clipboard-target="#prompt-text-1">Copy Prompt</button>
+        </div>
+    </div>
+
+    <div class="prompt-item">
+        <div class="prompt-header" aria-expanded="false" aria-controls="prompt-content-2">
+            <span class="prompt-title">Explorer</span>
+            <span class="prompt-toggle-icon">▶</span>
+        </div>
+        <div class="prompt-content" id="prompt-content-2">
+            <div class="prompt-text-area" id="prompt-text-2">## Explorer Task
+This is a placeholder for the **Explorer** prompt.
+
+You can describe the task for the explorer here, using **markdown-like** syntax.
+For example:
+- List item 1
+- List item 2
+
+Or provide `code_examples`.
+            </div>
+            <button class="copy-button" data-clipboard-target="#prompt-text-2">Copy Prompt</button>
+        </div>
+    </div>
+
+    <div class="prompt-item">
+        <div class="prompt-header" aria-expanded="false" aria-controls="prompt-content-3">
+            <span class="prompt-title">Verifier</span>
+            <span class="prompt-toggle-icon">▶</span>
+        </div>
+        <div class="prompt-content" id="prompt-content-3">
+            <div class="prompt-text-area" id="prompt-text-3">## Verifier Task
+This is a placeholder for the **Verifier** prompt.
+
+The goal is to verify something.
+1. Check condition A.
+2. If A is true, check condition B.
+3. Report findings.
+
+Ensure all **constraints** are met.
+            </div>
+            <button class="copy-button" data-clipboard-target="#prompt-text-3">Copy Prompt</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const promptHeaders = document.querySelectorAll('.prompt-header');
+
+    // Function to apply basic markdown-like styling
+    function stylePromptText(textArea) {
+        let html = textArea.innerHTML; // Use innerHTML to preserve existing HTML from transcription
+
+        // Handle ## Headers (simple version, only at the start of a line)
+        html = html.replace(/^(## .*)$/gm, '<span class="md-header">$1</span>');
+
+        // The bold and code styling is better handled by CSS if we wrap specific tags,
+        // but the transcribed HTML already uses <strong> and <code>.
+        // If you were dynamically loading plain text, you'd do more replacements here.
+        // For now, the CSS targets <strong>, <b>, and <code> directly.
+
+        textArea.innerHTML = html;
+    }
+
+
+    promptHeaders.forEach(header => {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('.prompt-toggle-icon');
+        const textArea = content.querySelector('.prompt-text-area');
+
+        if (textArea) {
+            stylePromptText(textArea); // Apply styling on load
+        }
+
+        header.addEventListener('click', function () {
+            const isActive = content.classList.contains('active');
+
+            // Close all other active items
+            document.querySelectorAll('.prompt-content.active').forEach(activeContent => {
+                if (activeContent !== content) {
+                    activeContent.classList.remove('active');
+                    activeContent.style.maxHeight = '0';
+                    activeContent.previousElementSibling.querySelector('.prompt-toggle-icon').textContent = '▶';
+                    activeContent.previousElementSibling.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle current item
+            if (isActive) {
+                content.classList.remove('active');
+                content.style.maxHeight = '0';
+                icon.textContent = '▶'; // Right pointing triangle
+                header.setAttribute('aria-expanded', 'false');
+            } else {
+                content.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px"; // Set max-height to content's full height
+                icon.textContent = '▼'; // Down pointing triangle
+                header.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    // Copy to clipboard functionality
+    const copyButtons = document.querySelectorAll('.copy-button');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const targetSelector = this.dataset.clipboardTarget;
+            const textToCopy = document.querySelector(targetSelector).innerText; // Use innerText to get raw text
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = this.textContent;
+                this.textContent = 'Copied!';
+                this.classList.add('copied');
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // You could add a visual cue for error here too
+            });
+        });
+    });
+});
+</script>
+
+</body>
+</html>

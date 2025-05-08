@@ -8,9 +8,9 @@ You are an expert spatial planner. Given the Current Image, your job is to gener
 
 ## Scene Graph Representation
 
-- Nodes: Objects present in the scene.  
-- Relations: Spatial relationships between object pairs.  
-- Allowed Relations in the scene graph:  
+- Nodes: Objects present in the scene.
+- Relations: Spatial relationships between object pairs.
+- Allowed Relations in the scene graph:
     - **Stacked On**: Object A is physically resting on Object B. This requires clear direct contact—Object A is visibly supported by Object B from below.
     - **Near**: Object A is positioned close to Object B without being stacked. Use this only when the objects are almost touching.
 
@@ -69,7 +69,7 @@ Next Action Sequence:
 
 1. Order Matters: Plan your actions so that preconditions are satisfied before you move an object.
 2. Scene Boundaries: If an object is near the scene boundary, avoid pushing it further toward the edge or placing new objects in a risky position.
-3. Manipulation (Suction) Constraints: 
+3. Manipulation (Suction) Constraints:
    - The suction can only reliably pick the topmost exposed surface.
    - In cluttered areas, an attempt to move one object may cause unintended collisions or shifts in neighboring objects.
    - Stacking another object on top of an unstable object can lead to the object toppling over.
