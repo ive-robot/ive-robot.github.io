@@ -169,3 +169,57 @@ figure figcaption {
 #top-video-description {
   font-size: 1rem;
 }
+
+/* Table styles for results tables */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+.top-border {
+    border-top: 2px solid black;
+}
+
+.bottom-border {
+    border-bottom: 2px solid black;
+}
+
+.header-border {
+    border-bottom: 1px solid #ddd;
+}
+
+.section-border {
+    border-bottom: 1px solid #ddd;
+}
+
+.centered {
+    text-align: center;
+}
+
+.table-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.multicolumn {
+    text-align: center;
+    font-weight: bold;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.reference {
+    color: #0066cc;
+}
