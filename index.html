@@ -236,26 +236,7 @@
         <div class="container is-max-desktop">
             <h3 class="title is-3 has-text-centered">Abstract</h3>
             <div class="content has-text-justified">
-                <p>
-                    Exploration is a fundamental challenge of general-purpose robotic learning, particularly in
-                    open-ended environments where explicit human guidance or task-specific feedback is limited.
-                    Vision-language models (VLMs), which can reason about object semantics, spatial relations,
-                    and potential outcomes, offer a promising foundation for guiding exploratory behavior by
-                    generating high-level goals or hypothetical transitions. However, their outputs lack
-                    grounding, making it difficult to determine whether imagined transitions are physically
-                    feasible or informative in the environment. To bridge this gap between imagination and
-                    execution, we present IVE(Imagine, Verify, Execute), an agentic exploration framework
-                    inspired by human curiosity. In humans, intrinsic motivation frequently emerges from the
-                    drive to discover novel scene configurations and to make sense of the environment. This
-                    process is often enhanced by verbalizing goals or intentions through language. To enable
-                    this human-inspired approach, IVE abstracts RGB-D observations into semantic scene graphs,
-                    imagines novel future scenes, predicts their physical plausibility, and executes actions via
-                    action tools. We evaluate IVE in both simulated and real-world tabletop environments using a
-                    suite of exploration metrics and downstream tasks. The results show that our method produces
-                    more diverse and meaningful exploration than RL baselines with intrinsic curiosity.
-                    Additionally, the data IVE collects enables downstream learning performance that closely
-                    matches that of policies trained on human-collected demonstrations.
-                </p>
+                <p>Exploration is essential for general-purpose robotic learning, especially in open-ended environments where dense rewards, explicit goals, or task-specific supervision are scarce. Vision-language models (VLMs), with their semantic reasoning over objects, spatial relations, and potential outcomes, present a compelling foundation for generating high-level exploratory behaviors. However, their outputs are often ungrounded, making it difficult to determine whether imagined transitions are physically feasible or informative. To bridge the gap between imagination and execution, we present IVE (Imagine, Verify, Execute), an agentic exploration framework inspired by human curiosity. Human exploration is often driven by the desire to discover novel scene configurations and to deepen understanding of the environment. Similarly, IVE leverages VLMs to abstract RGB-D observations into semantic scene graphs, imagine novel scenes, predict their physical plausibility, and generate executable skill sequences through action tools. We evaluate IVE in both simulated and real-world tabletop environments. The results show that IVE enables more diverse and meaningful exploration than RL baselines, as evidenced by a 4.1 to 7.8× increase in the entropy of visited states. Moreover, the collected experience supports downstream learning, producing policies that closely match or exceed the performance of those trained on human-collected demonstrations.</p>
             </div>
         </div>
     </section>
