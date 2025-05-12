@@ -53,8 +53,7 @@ Decision:
 If NO:
 - Explain which actions fail and why.
 - Point out mismatches or invalid transitions.
-
-If YES but issues are detected:
+If issues are detected:
 - Identify objects or areas causing risk (e.g., unstable stacks, blocked objects).
 - Suggest fine-grained intervention (e.g., "move obj_A before continuing").
 
@@ -69,8 +68,8 @@ YES or NO
 
 <start_reason>
 [If NO: Brief but clear explanation of what failed or was mismatched]
-[If YES but risky: Warning message with suggestion, e.g., "Unstable stack: move obj_b before continuing"]
-[If YES but too unstable: "Scene too cluttered. Recommend temporary declutter mode."]
+- risky: Warning message with suggestion, e.g., "Unstable stack: move obj_b before continuing"
+- Too unstable: "Scene too cluttered. Recommend temporary declutter mode."
 [If YES and no issues: Leave this part empty]
 <end_reason>
 -----
@@ -82,8 +81,8 @@ YES or NO
 Clutter or instability **does not always require full decluttering**. Consider recommending targeted fixes first.
 
 #### Examples of Minor Intervention:
-- `"obj_b is stacked on obj_a, which is already supporting obj_c. Recommend moving obj_b first to prevent instability."`
-- `"obj_d is partially occluded and may be hard to suction. Recommend shifting nearby obj_e first."`
+- `"obj_b is stacked on obj_a, which is already supporting obj_c. Recommend moving obj_b first to prevent instability."'
+- `"obj_d is partially occluded and may be hard to suction. Recommend shifting nearby obj_e first."'
 
 #### Examples of Decluttering (rare):
-- `"Multiple overlapping clusters and deep stacks suggest high instability. Recommend decluttering of current layout before further scene exploration."`
+- `"Multiple overlapping clusters and deep stacks suggest high instability. Recommend decluttering of current layout before further scene exploration."'
